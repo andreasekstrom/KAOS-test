@@ -3,7 +3,7 @@ require 'capybara/dsl'
 require "selenium-webdriver"
 
 Capybara.default_driver = :selenium
-Capybara.app_host = 'http://localhost:4567/kaos/'
+Capybara.app_host = 'http://localhost:4567/kaos'
 Capybara.run_server = false
 
 # This seems to be the default...
@@ -14,7 +14,7 @@ Capybara.run_server = false
 class Shop
   
   def initialize
-    #Capybara.visit("http://www.google.com/")
+    Capybara.visit ""
     super()
   end
   
@@ -40,6 +40,18 @@ class Shop
       transition :in_checkout_logged_in => :anonymous
     end
     
+    state :anonymous do
+      def verify
+        abort "Could not find login link" unless Capybara.has_content?("Login")
+        puts "State #{state} verified"
+      end
+    end
+    
+    state all - :anonymous do
+      def verify
+        puts "Verify not implemented yet"
+      end
+    end
   end
 end
   
