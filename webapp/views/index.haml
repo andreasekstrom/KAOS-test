@@ -1,0 +1,16 @@
+%html
+  %head
+    %title E-shop
+  %body
+    %h1 E-shop
+    %p Welcome to the E-shop!
+    %p
+      You have
+      = @items_in_cart
+    %ul
+      %li
+        %a{:href => "/login"} Login
+      %li
+        %a{:href => "/add_to_cart"} Add to cart
+      %li
+        %a{:href => "/checkout"} Go to checkout

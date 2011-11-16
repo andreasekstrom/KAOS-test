@@ -7,6 +7,9 @@ class RandomTestPersona
   end
   
   def browse
+    puts "Verifying starts state #{@statemachine.state}"
+    @statemachine.verify
+    
     @max_transitions.times do |iteration|
       puts "I'm in state #{@statemachine.state}"
       
