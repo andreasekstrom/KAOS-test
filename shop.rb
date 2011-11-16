@@ -14,14 +14,14 @@ Capybara.run_server = false
 class Shop
   
   def initialize
-    Capybara.visit("http://www.google.com/")
+    #Capybara.visit("http://www.google.com/")
     super()
   end
   
   state_machine :initial => :anonymous do
     
     after_transition :on => :add_to_cart do
-      Capybara.visit("http://www.apple.com/")
+      #Capybara.visit("http://www.apple.com/")
     end
     
     event :add_to_cart do
@@ -39,6 +39,7 @@ class Shop
     event :logout do
       transition :in_checkout_logged_in => :anonymous
     end
+    
   end
 end
   
