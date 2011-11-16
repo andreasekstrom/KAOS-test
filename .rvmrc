@@ -1,0 +1,5 @@
+# This file is used by RVM to change which Ruby version and gemset that you use in the project.
+# More info:
+# https://rvm.beginrescueend.com/
+# http://marcgrabanski.com/articles/gem-management-with-rvm-and-bundler
+rvm use 1.9.2@kaos
