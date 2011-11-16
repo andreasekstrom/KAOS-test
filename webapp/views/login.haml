@@ -1,0 +1,14 @@
+%html
+  %head
+    %title Login - E-shop
+  %body
+    %h1 Login - E-shop
+    %form{:action => "/login", :method => "post"}
+      %p
+        %label{:for => "username"} Username:
+        %input#username{:type => "text", :name => "username"}
+      %p
+        %label{:for => "password"} Password
+        %input#password{:type => "password", :name => "password"}
+      %p
+        %input{:type => "submit", :value => "Login"}

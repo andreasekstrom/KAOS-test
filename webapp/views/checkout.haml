@@ -1,0 +1,12 @@
+%html
+  %head
+    %title Checkout - E-shop
+  %body
+    %h1 Checkout - E-shop
+    %p
+      You have
+      = @items_in_cart
+      items in your cart, please login to continue
+    %ul
+      %li
+        %a{:href => "/login"} Login

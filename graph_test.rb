@@ -8,6 +8,7 @@ require 'irb'
 require 'irb/completion'
 require 'shop'
 require 'random_testpersona'
+require 'deterministic_testpersona'
 
 shop = Shop.new
 
@@ -18,6 +19,7 @@ if ARGV.include? '--irb'
 elsif ARGV.include? '--draw'
   StateMachine::Machine.draw("Shop", {})
 else
+  #test_persona = DeterministicTestPersona.new(shop)
   test_persona = RandomTestPersona.new(shop, 10, "in_checkout_logged_in")
   test_persona.browse
 end
