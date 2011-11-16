@@ -5,7 +5,11 @@ $: << File.expand_path(File.dirname(__FILE__)) unless $:.include?(File.expand_pa
 
 require 'state_machine'
 require 'shop'
+require 'irb'
+require 'irb/completion'
 
 
-shop = Shop.new
-StateMachine::Machine.draw("Shop", {})
+SHOP = Shop.new
+#StateMachine::Machine.draw("Shop", {})
+
+IRB.start
