@@ -19,6 +19,5 @@ elsif ARGV.include? '--draw'
   StateMachine::Machine.draw("Shop", {})
 else
   test_persona = RandomTestPersona.new(shop, 10, "in_checkout_logged_in")
-
   test_persona.browse
 end

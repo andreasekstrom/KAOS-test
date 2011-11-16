@@ -3,7 +3,7 @@ require 'capybara/dsl'
 require "selenium-webdriver"
 
 Capybara.default_driver = :selenium
-Capybara.app_host = 'http://localhost:4567/kaos/'
+Capybara.app_host = 'http://localhost:4567'
 Capybara.run_server = false
 
 # This seems to be the default...
@@ -14,15 +14,13 @@ Capybara.run_server = false
 class Shop
   
   def initialize
-    #Capybara.visit("http://www.google.com/")
+    Capybara.visit("/")
     super()
   end
   
   state_machine :initial => :anonymous do
     
-    after_transition :on => :add_to_cart do
-      #Capybara.visit("http://www.apple.com/")
-    end
+    # The transitions defining the state machine
     
     event :add_to_cart do
       transition :anonymous  => :anonymous
@@ -38,6 +36,22 @@ class Shop
     
     event :logout do
       transition :in_checkout_logged_in => :anonymous
+    end
+    
+    # Actions for transitions
+    
+    after_transition :on => :add_to_cart do
+      Capybara.click_link("Add to cart")
+    end
+    
+    # Verifications of states
+
+    state :anonymous do
+      def verify
+        unless Capybara.page.has_content? "Login"
+          abort "Failed to verify that you are in the anonymous state"
+        end
+      end
     end
     
   end

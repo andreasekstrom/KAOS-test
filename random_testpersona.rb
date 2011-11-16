@@ -7,6 +7,9 @@ class RandomTestPersona
   end
   
   def browse
+    puts "Verifying starts state #{@statemachine.state}"
+    @statemachine.verify
+    
     @max_transitions.times do |iteration|
       if @statemachine.state == @end_state
         puts "Reached end state #{@end_state} after #{iteration} transitions!"
@@ -22,7 +25,7 @@ class RandomTestPersona
       puts "I will perform event #{event}"
       
       @statemachine.fire_state_event event
-      #@statemachine.verify_state
+      @statemachine.verify
     end
 
     puts "Tried to reach end state #{@end_state} but failed after #{@max_transitions} transitions"
